@@ -4,7 +4,7 @@ export async function deployUserWorker(scriptContent: string) {
   // Use environment variables for configuration
   const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
   const apiToken = process.env.CLOUDFLARE_API_TOKEN;
-  const dispatchNamespace = "vibesdk";
+  const dispatchNamespace = "vibesdk"; // Must match wrangler.jsonc
   const scriptName = "playground-demo-" + Date.now(); // Unique name per deployment for this demo
 
   if (!accountId || !apiToken) {
@@ -40,7 +40,7 @@ export async function deployUserWorker(scriptContent: string) {
       body: formData,
     });
 
-    const data = await response.json();
+    const data = await response.json() as any; // Cast to any to bypass TS check for now, or define a proper interface
 
     if (!response.ok) {
       console.error("Cloudflare API Error:", JSON.stringify(data, null, 2));
@@ -61,6 +61,6 @@ export async function deployUserWorker(scriptContent: string) {
     return { success: true, url: workerUrl };
 
   } catch (error: any) {
-    return { success: false, error: error.message };
+    return { success: false, error: error.message || "Unknown error occurred" };
   }
 }
