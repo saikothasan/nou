@@ -14,7 +14,7 @@
   "dispatch_namespaces": [
     {
       "binding": "DISPATCHER",
-      "namespace": "user-workers-prod" 
+      "namespace": "vibesdk" 
     }
   ],
   "kv_namespaces": [
