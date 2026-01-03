@@ -4,9 +4,8 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2024-09-23",
   "compatibility_flags": [
-		"nodejs_compat",
-		"global_fetch_strictly_public"
-	],
+    "nodejs_compat"
+  ],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
@@ -14,7 +13,7 @@
   "dispatch_namespaces": [
     {
       "binding": "DISPATCHER",
-      "namespace": "vibesdk" 
+      "namespace": "vibesdk"
     }
   ],
   "kv_namespaces": [
