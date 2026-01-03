@@ -2,24 +2,53 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "nou",
   "main": ".open-next/worker.js",
-  "compatibility_date": "2024-09-23",
+  "compatibility_date": "2024-12-18",
   "compatibility_flags": [
-    "nodejs_compat"
+    "nodejs_compat",
+    "global_fetch_strictly_public"
   ],
+
+  // 1. ASSETS & OBSERVABILITY
   "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
   },
-  "dispatch_namespaces": [
-    {
-      "binding": "DISPATCHER",
-      "namespace": "vibesdk"
-    }
-  ],
+  "observability": {
+    "enabled": true
+  },
+  "placement": { 
+    "mode": "smart" 
+  },
   "kv_namespaces": [
     {
-      "binding": "NEXT_CACHE_WORKERS_KV",
-      "id": "cd490acf88164f058920a13ca8622c5b"
+      "binding": "KV",
+      "id": "1e24d482ecee411d98c749f2c35b15ec"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "templates"
+    },
+    {
+      "binding": "MY_FILES",
+      "bucket_name": "templates"
+    }
+  ],
+
+  // 3. AI & BROWSER BINDINGS
+  "ai": {
+    "binding": "AI"
+  },
+  "browser": {
+    "binding": "MY_BROWSER"
+  },
+
+  // 6. INTERNAL SERVICES
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "nou"
     }
   ]
 }
