@@ -25,6 +25,12 @@
       "id": "1e24d482ecee411d98c749f2c35b15ec"
     }
   ],
+"dispatch_namespaces": [
+    {
+      "binding": "DISPATCHER",
+      "namespace": "vibesdk"
+    }
+  ],
   "r2_buckets": [
     {
       "binding": "NEXT_INC_CACHE_R2_BUCKET",
