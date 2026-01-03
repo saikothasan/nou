@@ -46,7 +46,9 @@ export default function EditorPage() {
     try {
       const result = await deployUserWorker(code);
       
-      if (!result.success) throw new Error(result.error);
+      if (!result.success || !result.url) {
+        throw new Error(result.error || "Deployment succeeded but no URL returned.");
+      }
 
       setPreviewUrl(result.url);
       setIframeKey(prev => prev + 1);
